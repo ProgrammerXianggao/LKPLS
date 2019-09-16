@@ -1,0 +1,60 @@
+{% extends 'layout.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    Country Information
+{% endblock %}
+
+
+{% block content %}
+    <div class="page-title" style="background-image: url({% static 'images/page-title.jpg' %})">
+        <h1>Culture Information</h1>
+    </div>
+
+    <section id="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-10 col-sm-offset-1 fadeInDown">
+                    <div class="tab-wrap">
+                        <div class="media">
+                            <div class="parrent pull-left">
+                                <ul class="nav nav-tabs nav-stacked">
+                                    {% for culture in cultures %}
+                                        <li class=""><a href="#tab{{ culture.id }}" data-toggle="tab" class="tehnical">
+                                            {{ culture.country_name }}
+                                        </a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+
+                            <div class="parrent media-body">
+                                <div class="tab-content">
+                                    {% for culture in cultures %}
+                                        <div class="tab-pane fade" id="tab{{ culture.id }}">
+                                            <p>{{ culture.country_info }}</p>
+                                            <p>{{ culture.country_info1 }}</p>
+                                            <p>{{ culture.country_info2 }}</p>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <!--/.tab-content-->
+                            </div>
+                            <!--/.media-body-->
+                        </div>
+                        <!--/.media-->
+                    </div>
+                    <!--/.tab-wrap-->
+                </div>
+                <!--/.col-sm-6-->
+
+            </div>
+            <!--/.row-->
+        </div>
+        <!--/.container-->
+    </section>
+    <!--/#content-->
+{% endblock %}
+
+{% block drop %}
+    active
+{% endblock %}
